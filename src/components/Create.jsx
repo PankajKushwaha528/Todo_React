@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 const Create = (props) => {
   let todos = props.todos;
   let settodos = props.settodos;
@@ -22,6 +22,7 @@ const Create = (props) => {
     copytodos.push(data);
     settodos(copytodos);
 
+    toast.success("Todo Created!")
     reset();
       
   }
@@ -39,7 +40,7 @@ const Create = (props) => {
           />
           {errors && errors.title && errors.title.message && <small className="text-xl font-light text-red-500 ">{errors.title.message}</small>}
 
-          {/* <small>{errors?.title?.message}</small> */} //for one line 
+          {/* <small>{errors?.title?.message}</small> */}  
 
         <br /><br />
         <button className="px-4 py-2 border-none text-2xl font-medium text-white rounded-xl mt-4 active:scale-95 hover:bg-green-800 cursor-pointer bg-green-600">Create Todos</button>
